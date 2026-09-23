@@ -2,11 +2,11 @@ import random
 
 
 def main():
-    random_state(5, 5)
+    render(random_state(30, 2))
 
 
 def dead_state(width, height):
-    return [[0] * height] * width
+    return [[0] * height for _ in range(width)]
 
 
 def random_state(width, height):
@@ -17,7 +17,14 @@ def random_state(width, height):
             random_number = random.random()
             state[i][j] = 0 if random_number >= 0.5 else 1
 
-    print(state)
+    return state
+
+
+def render(board_state):
+    for row in board_state:
+        for item in row:
+            print("o", end="\t") if item == 1 else print("*", end="\t")
+        print()
 
 
 if __name__ == "__main__":
